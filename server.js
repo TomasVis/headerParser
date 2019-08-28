@@ -24,7 +24,11 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-
+app.get("/api/whoami", function (req, res) {
+	var ua = window.navigator.userAgent;
+	console.log(ua)
+  res.json({greeting: 'hello API'});
+});
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
