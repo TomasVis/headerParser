@@ -25,9 +25,9 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.use(function(req, res, next) {
-	 console.log(req.headers)
+	 //console.log(req.headers['x-forwarded-for'])
   res.locals.software = req.get('User-Agent');
-  res.locals.ipaddress = req.ip;
+  res.locals.ipaddress = req.headers['x-forwarded-for'];
   res.locals.language = req.get('Accept-Language');
   next();
 });
