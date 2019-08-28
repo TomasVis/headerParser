@@ -24,9 +24,14 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+app.use(function(req, res, next) {
+  res.locals.ua = req.get('User-Agent');
+  console.log(res.locals.ua)
+  next();
+});
+
 app.get("/api/whoami", function (req, res) {
-	var ua = window.navigator.userAgent;
-	console.log(ua)
+
   res.json({greeting: 'hello API'});
 });
 
