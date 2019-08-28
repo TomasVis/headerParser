@@ -25,7 +25,7 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.use(function(req, res, next) {
-	 //console.log(req.headers['x-real-ip'])
+	 console.log(req.headers)
   res.locals.software = req.get('User-Agent');
   res.locals.ipaddress = req.ip;
   res.locals.language = req.get('Accept-Language');
