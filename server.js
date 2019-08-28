@@ -25,14 +25,16 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.use(function(req, res, next) {
-  res.locals.ua = req.get('User-Agent');
-  console.log(res.locals.ua)
+  //res.locals.ua = req.get('User-Agent');
+  res.locals.ip = req.connection.remoteAddress
+  res.locals.ua = req.get('Accept-Language');
+  console.log(req)
   next();
 });
 
 app.get("/api/whoami", function (req, res) {
 
-  res.json({greeting: 'hello API'});
+  res.json({greeting: res.locals});
 });
 
 // listen for requests :)
